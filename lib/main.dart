@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo_with_provider/Screens/home.dart';
+
+import 'Screens/task_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(color: Color(0XFF2F5233)),
         backgroundColor: const Color(0XFFDCDCDC)
       ),
-      home: const Home(),
+      home: const TaskScreen(),
     );
   }
 }
