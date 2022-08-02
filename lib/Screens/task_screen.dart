@@ -74,7 +74,49 @@ class TaskScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+              // isScrollControlled: true,
+              context: context,
+              builder: (context) => FractionallySizedBox(
+                    // heightFactor: 0.7,
+                    child: Container(
+                      color: const Color(0XFF757575),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 80.0),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20),
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Text(
+                              'Add Todo',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontSize: 30.0,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            const TextField(
+                              autofocus: true,
+                              decoration: InputDecoration(),
+                            ),
+                            TextButton(
+                                style: ButtonStyle(),
+                                onPressed: () {},
+                                child: Text('Add'))
+                          ],
+                        ),
+                      ),
+                    ),
+                  ));
+        },
         child: const Icon(Icons.add),
         backgroundColor: Theme.of(context).primaryColor,
       ),
