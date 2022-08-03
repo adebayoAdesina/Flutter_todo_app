@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
 
-class TodoList extends StatefulWidget {
+class TodoList extends StatelessWidget {
   final String text;
+  final bool isChecked;
+  final ValueChanged onChange;
+  final Function onLongPress;
   const TodoList({
     Key? key,
     required this.text,
+    required this.isChecked,
+    required this.onChange, required this.onLongPress,
   }) : super(key: key);
 
   @override
-  State<TodoList> createState() => _TodoListState();
-}
-
-class _TodoListState extends State<TodoList> {
-  bool isChecked = false;
-  @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(widget.text),
+      onLongPress: ()=>onLongPress(),
+      title: Text(
+        text,
+        style: TextStyle(
+          decoration: isChecked == true ? TextDecoration.lineThrough : null,
+        ),
+      ),
       trailing: Checkbox(
-          activeColor: Theme.of(context).primaryColor,
-          value: isChecked,
-          onChanged: (value) {
-            setState(() {
-              isChecked = value!;
-            });
-          }),
+        activeColor: Theme.of(context).primaryColor,
+        value: isChecked,
+        onChanged: onChange,
+      ),
     );
   }
 }
